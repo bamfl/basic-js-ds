@@ -68,7 +68,21 @@ module.exports = class BinarySearchTree {
 		return false;
   }
 
-  find(data) {}
+  find(data) {
+		let node = this.treeRoot;
+
+    while (node) {
+      if (data === node.data) {
+        return node;
+      } else if (data < node.data) {
+				node = node.left;
+			} else if (data > node.data) {
+				node = node.right;
+			}
+    }
+
+		return null;
+	}
 
   remove(data) {}
 
