@@ -17,89 +17,59 @@ class Node {
 module.exports = class BinarySearchTree {
 // class BinarySearchTree {
   constructor() {
-    this.root = null;
+    this.treeRoot = null;
   }
 
   root() {
-    return this.root;
+    return this.treeRoot;
   }
 
   add(data) {
-    if (!this.root) {
-      this.root = new Node(data);
+    if (!this.treeRoot) {
+      this.treeRoot = new Node(data);
     } else {
-      let node = this.root;
+      let node = this.treeRoot;
 
       while (node) {
 				if (data === node.data) {
 					break;
 				} else if (data > node.data) {
-					if (!node.right) {
-						break;
+					if (node.right === null) {
+					  node.right = new Node(data);
+						return;
 					}
+
           node = node.right;
         } else {
-					if (!node.left) {
-						break;
+					if (node.left === null) {
+						node.left = new Node(data);
+						return;
 					}
+
           node = node.left;
         }
-      }
-
-      if (data > node.data) {
-        node.right = new Node(data);
-      } else {
-        node.left = new Node(data);
       }
     }
   }
 
   has(data) {
-    let node = this.root;
 
-    while (node) {
-      if (data > node) {
-        if (!node.right) {
-          return false;
-        }
-        return true;
-      } else {
-        if (!node.left) {
-          return false;
-        }
-        return true;
-      }
-    }
   }
 
   find(data) {
-    let node = this.root;
 
-    while (node) {
-      if (data > node) {
-        if (!node.right) {
-          return node.right;
-        }
-        return true;
-      } else {
-        if (!node.left) {
-          return null;
-        }
-        return node.left;
-      }
-    }
   }
 
   remove(data) {
-    return true;
+
   }
 
   min() {
-    if (!this.root) {
+    if (!this.treeRoot) {
       return null;
     }
 
-    let node = this.root;
+    let node = this.treeRoot;
 
     while (node.left) {
       node = node.left;
@@ -109,11 +79,11 @@ module.exports = class BinarySearchTree {
   }
 
   max() {
-    if (!this.root) {
+    if (!this.treeRoot) {
       return null;
     }
 
-    let node = this.root;
+    let node = this.treeRoot;
 
     while (node.right) {
       node = node.right;
@@ -125,10 +95,9 @@ module.exports = class BinarySearchTree {
 
 // const tree = new BinarySearchTree();
 
-// tree.add(10);
-// tree.add(12);
-// tree.add(1);
-// tree.add(1);
-// tree.add(15);
+// // tree.add(10);
+// // tree.add(11);
+// // tree.add(9);
+// // tree.add(10);
 
-// console.log(tree);
+// console.log(tree.root());
