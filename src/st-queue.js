@@ -48,7 +48,5 @@ module.exports = class Queue {
 
 			return value;
 		}
-
-		return null;
   }
 };
