@@ -15,7 +15,7 @@ class Node {
 }
 
 module.exports = class BinarySearchTree {
-  // class BinarySearchTree {
+// class BinarySearchTree {
   constructor() {
     this.treeRoot = null;
   }
@@ -59,32 +59,62 @@ module.exports = class BinarySearchTree {
       if (data === node.data) {
         return true;
       } else if (data < node.data) {
-				node = node.left;
-			} else if (data > node.data) {
-				node = node.right;
-			}
+        node = node.left;
+      } else if (data > node.data) {
+        node = node.right;
+      }
     }
 
-		return false;
+    return false;
   }
 
   find(data) {
-		let node = this.treeRoot;
+    let node = this.treeRoot;
 
     while (node) {
       if (data === node.data) {
         return node;
       } else if (data < node.data) {
-				node = node.left;
-			} else if (data > node.data) {
-				node = node.right;
-			}
+        node = node.left;
+      } else if (data > node.data) {
+        node = node.right;
+      }
     }
 
-		return null;
-	}
+    return null;
+  }
 
-  remove(data) {}
+  remove(data) {
+		if (this.has(data)) {
+			let node = this.treeRoot;
+	
+			while (node) {
+				if (data === node.data) {
+					node = null;
+				} else if (data < node.data) {
+					if (node.left === data) {
+						node.left = null;
+					} else if (node.right === data) {
+						node.right = null;
+					}
+	
+					node = node.left;
+				} else if (data > node.data) {
+					if (node.left === data) {
+						node.left = null;
+					} else if (node.right === data) {
+						node.right = null;
+					}
+	
+					node = node.right;
+				}
+			}
+	
+			return node;
+		}
+
+		return null;
+  }
 
   min() {
     if (!this.treeRoot) {
@@ -114,12 +144,3 @@ module.exports = class BinarySearchTree {
     return node.data;
   }
 };
-
-// const tree = new BinarySearchTree();
-
-// // tree.add(10);
-// // tree.add(11);
-// // tree.add(9);
-// // tree.add(10);
-
-// console.log(tree.root());
