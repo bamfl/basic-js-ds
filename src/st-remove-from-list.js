@@ -20,20 +20,20 @@ const { NotImplementedError } = require('../extensions/index.js');
  */
 
 module.exports = function removeKFromList(l, k) {
-	const filteredArr = [];
-	
-  while(l) {
-		if (l.value !== k) {
-			filteredArr.push(l.value);
+  const filteredArr = [];
+
+  while (l) {
+    if (l.value !== k) {
+      filteredArr.push(l.value);
     }
     l = l.next;
   }
-	
-	filteredArr.reverse();
-	
-	let linkedList = null;
 
-  filteredArr.forEach(val => {
+  filteredArr.reverse();
+
+  let linkedList = null;
+
+  filteredArr.forEach((val) => {
     linkedList = { value: val, next: linkedList };
   });
 
