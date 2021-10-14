@@ -15,7 +15,7 @@ class Node {
 }
 
 module.exports = class BinarySearchTree {
-// class BinarySearchTree {
+  // class BinarySearchTree {
   constructor() {
     this.treeRoot = null;
   }
@@ -31,20 +31,20 @@ module.exports = class BinarySearchTree {
       let node = this.treeRoot;
 
       while (node) {
-				if (data === node.data) {
-					break;
-				} else if (data > node.data) {
-					if (node.right === null) {
-					  node.right = new Node(data);
-						return;
-					}
+        if (data === node.data) {
+          break;
+        } else if (data > node.data) {
+          if (node.right === null) {
+            node.right = new Node(data);
+            return;
+          }
 
           node = node.right;
         } else {
-					if (node.left === null) {
-						node.left = new Node(data);
-						return;
-					}
+          if (node.left === null) {
+            node.left = new Node(data);
+            return;
+          }
 
           node = node.left;
         }
@@ -53,16 +53,24 @@ module.exports = class BinarySearchTree {
   }
 
   has(data) {
+    let node = this.treeRoot;
 
+    while (node) {
+      if (data === node.data) {
+        return true;
+      } else if (data < node.data) {
+				node = node.left;
+			} else if (data > node.data) {
+				node = node.right;
+			}
+    }
+
+		return false;
   }
 
-  find(data) {
+  find(data) {}
 
-  }
-
-  remove(data) {
-
-  }
+  remove(data) {}
 
   min() {
     if (!this.treeRoot) {
@@ -91,7 +99,7 @@ module.exports = class BinarySearchTree {
 
     return node.data;
   }
-}
+};
 
 // const tree = new BinarySearchTree();
 
